@@ -26,7 +26,7 @@ import { ReservationSchema } from './models/reservation.schema';
         PORT: Joi.number().required(),
         AUTH_HOST: Joi.string().required(),
         AUTH_PORT: Joi.number().required(),
-      })
+      }),
     }),
     ClientsModule.registerAsync([
       {
@@ -36,12 +36,12 @@ import { ReservationSchema } from './models/reservation.schema';
           options: {
             host: configService.get('AUTH_HOST'),
             port: configService.get('AUTH_PORT'),
-          }
+          },
         }),
         inject: [ConfigService],
-        imports: [ConfigModule]
-      }
-    ])
+        imports: [ConfigModule],
+      },
+    ]),
   ],
   controllers: [ReservationsController],
   providers: [ReservationsService, ReservationsRepository],
