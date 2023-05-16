@@ -1,4 +1,4 @@
-import { Observable, map, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import {
   CanActivate,
   ExecutionContext,
@@ -30,6 +30,7 @@ export class JwtAuthGuard implements CanActivate {
           context.switchToHttp().getRequest().user = res;
         }),
         map(() => true),
+        catchError(() => of(false)),
       );
   }
 }
