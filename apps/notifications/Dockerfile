@@ -2,17 +2,16 @@ FROM node:alpine AS development
 
 WORKDIR /usr/src/app
 
-COPY ["package.json", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.build.json", "./"]
+COPY ["package.json", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.build.json", "nest-cli.json", "./"]
 
 RUN npm install -g pnpm
-RUN pnpm install
 
 COPY apps/notifications apps/notifications
 COPY libs libs
 
-RUN cd apps/notifications && pnpm install
+RUN pnpm install -r
 
-RUN pnpm run build
+RUN pnpm run build notifications
 
 FROM node:alpine AS production
 
