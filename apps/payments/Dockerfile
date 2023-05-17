@@ -2,17 +2,16 @@ FROM node:alpine AS development
 
 WORKDIR /usr/src/app
 
-COPY ["package.json", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.build.json", "./"]
+COPY ["package.json", "pnpm-lock.yaml", "tsconfig.json", "tsconfig.build.json", "nest-cli.json", "./"]
 
 RUN npm install -g pnpm
-RUN pnpm install
 
 COPY apps/payments apps/payments
 COPY libs libs
 
-RUN cd apps/payments && pnpm install
+RUN pnpm install -r
 
-RUN pnpm run build
+RUN pnpm run build payments
 
 FROM node:alpine AS production
 
