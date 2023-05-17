@@ -36,3 +36,6 @@ lerna-debug.log*
 
 # Enviroment Files
 .env
+
+# Deployment Credentials
+k8s/sleepr/*.json
