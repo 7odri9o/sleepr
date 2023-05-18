@@ -35,12 +35,16 @@ services:
     image: us-east4-docker.pkg.dev/sleepr-386921/payments/production
     env_file:
       - ../apps/payments/.env
+    ports:
+      - '3003:3003'
 
   notifications:
     container_name: notifications_e2e
     image: us-east4-docker.pkg.dev/sleepr-386921/notifications/production
     env_file:
       - ../apps/notifications/.env
+    ports:
+      - '3004:3004'
 
   mongo:
     container_name: mongo_e2e
