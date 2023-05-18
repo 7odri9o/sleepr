@@ -7,6 +7,7 @@ import {
   LoggerModule,
   AUTH_SERVICE,
   PAYMENTS_SERVICE,
+  HealthModule,
 } from '@app/common';
 import { ReservationsService } from './reservations.service';
 import { ReservationsController } from './reservations.controller';
@@ -16,6 +17,7 @@ import { ReservationSchema } from './models/reservation.schema';
 
 @Module({
   imports: [
+    HealthModule,
     DatabaseModule,
     DatabaseModule.forFeature([
       {
