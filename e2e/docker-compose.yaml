@@ -3,6 +3,8 @@ services:
     container_name: e2e
     build:
       dockerfile: ./Dockerfile
+    env_file:
+      - ./.env
     volumes:
       - ./specs:/usr/src/app/specs
     depends_on:
